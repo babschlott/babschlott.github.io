@@ -2,17 +2,29 @@
 <html>
 <body>
 
-<?php
-  // comentarios
-  $valor = 10+35;
-  echo "O resultado foi: " .$valor;
-  $texto="http://www.google.com";
-  echo "<a href='".$texto."'>Clique aqui</a>";
-?>
-  <script>
-    var valor=10+35;
-    alert(valor);
-  </script>
+  <?php
+    //Comentarios
+    $texto ="http://www.google.com";
+    echo "<a href=\"".$texto."\">Clique aqui</a>";
+  ?>
+  
+  <!DOCTYPE html>
+
+
+<form action="cadastrar.php">
+  Nome:<br>
+  <input type="text" name="nome">
+  <br>
+  e-mail:<br>
+  <input type="text" name="email">
+  <br><br>
+  senha:<br>
+  <input type="password" name="senha">
+  <br><br>
+  <input type="submit" value="Cadastrar">
+</form> 
+
 
 </body>
 </html>
+

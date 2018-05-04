@@ -7,7 +7,7 @@ Tome cuidado, agora sei seu e-mail: <?php echo $_GET["email"]; ?>
   $servername = "localhost";
   $username = "root";
   $password = "";
-  $dbname = "loja";
+  $dbname = "banco";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password,$dbname);
@@ -20,9 +20,10 @@ echo "<br>Sistema conectado ao sgbd";
   $nome = $_GET["nome"];
   $senha = sha1($_GET["senha"]);
   $email = $_GET["email"];
+  $nickname = $_GET["nickname"];
   
-  $sql = "INSERT INTO usuario (nome, email, senha)
-VALUES ('".$nome."', '".$email."', '".$senha."')";
+  $sql = "INSERT INTO formulario (nome, email, senha, nickname)
+VALUES ('".$nome."', '".$email."', '".$senha."', '".$nickname."')";
 
 if ($conn->query($sql) === TRUE) {
     echo "Cadastrado com sucesso!";
@@ -36,3 +37,4 @@ $conn->close();
 
 </body>
 </html>
+

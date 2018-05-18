@@ -1,65 +1,28 @@
-<!DOCTYPE html>
 <html>
-<body>
-
-  <?php
-    //Comentarios
-    $texto ="http://www.google.com";
-    echo "<a href=\"".$texto."\">Clique aqui</a>";
-  ?>
   
-  <!DOCTYPE html>
+  <head>
+    
+  </head>
+  <body>
+ <!DOCTYPE html>
 
-
-<form action="cadastrar.php">
-  Nome completo:<br>
-  <input type="text" name="nome">
-  <br>
+<h1>Login </h1>
+<form action="acesso.php">
   e-mail:<br>
   <input type="text" name="email">
   <br><br>
   senha:<br>
   <input type="password" name="senha">
   <br><br>
-  nickname: <br>
-  <input type="text" name="nickname">
-  <br><br>
-  <input type="submit" value="Cadastrar">
+ 
+  <input type="submit" value="Entrar">
 </form> 
+   <?php
+    
+    $texto ="cadastro.php";
+    echo "<a href=\"".$texto."\">Ainda nao possuo cadastro</a>";
+  ?>   
 
-
-</body>
+    
+  </body>
 </html>
-<!DOCTYPE html>
-<html>
-<body>
-
-  <?php
-    //Comentarios
-    $texto ="http://www.google.com";
-    echo "<a href=\"".$texto."\">Clique aqui</a>";
-  ?>
-  
-  <!DOCTYPE html>
-
-
-<form action="cadastrar.php">
-  Nome completo:<br>
-  <input type="text" name="nome">
-  <br>
-  e-mail:<br>
-  <input type="text" name="email">
-  <br><br>
-  senha:<br>
-  <input type="password" name="senha">
-  <br><br>
-  nickname: <br>
-  <input type="text" name="nickname">
-  <br><br>
-  <input type="submit" value="Cadastrar">
-</form> 
-
-
-</body>
-</html>
-

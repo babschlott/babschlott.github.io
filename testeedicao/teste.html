@@ -1,0 +1,215 @@
+<html>
+<body>
+<meta charset="utf-8">
+  
+Selecione a parte do texto SGDD e em seguida clique no botao que corresponde ao seu contexto:
+<div id="myarea" contenteditable="true">Descrição do jogo aqui</div>
+<br>
+<button onclick="getSelectionHtml('listaarte');" class="button">Arte</button>
+<button onclick="getSelectionHtml('listadesenv');" class="button button2">Programação</button>
+<button onclick="getSelectionHtml('listaaudio');" class="button button3">Audio</button>
+<button onclick="getSelectionHtml('listaeduca');" class="button button4">Obj Pedagogico</button>
+<button onclick="removeLista('listaarte');"> Limpar Arte</button>
+<button onclick="removeLista('listadesenv');"> Limpar Prog</button>
+<button onclick="removeLista('listaaudio');"> Limpar Audio</button>
+<button onclick="removeLista('listaeduca');">Limpar Obj Pedagogico</button>
+<div class="grid-container">
+<div class="col1">
+<div id="header1"><h2> Arte </h2>
+</div>
+<ul id="listaarte"></ul>
+<br>
+</div>
+<div class="col2">
+  <div id="header2">
+    <h2> Programação</h2>
+  </div>
+<ul id="listadesenv"></ul>
+  </div>
+<div class="col3">
+<div id="header3">
+  <h2>Audio</h2>
+  </div>
+<ul id="listaaudio"></ul>
+<br>
+  </div>
+<div class="col4">
+  <div id="header4">
+    <h2>Objetivo pedagógico</h2>
+  </div>
+  <ul id="listaeduca"></ul>
+  </div>
+  </div>
+  </body>
+<script>
+function getSelectionHtml(identidade) {
+var html = "";
+  var antes = document.getElementById(identidade).innerHTML;
+  var novalinha = "<li>";
+  var fechalinha = "</li>";
+  if (typeof window.getSelection != "undefined") {
+    var sel = window.getSelection();
+    if (sel.rangeCount) {
+      var container = document.createElement("div");
+      for (var i = 0, len = sel.rangeCount; i < len; ++i) {
+        container.appendChild(sel.getRangeAt(i).cloneContents());
+      }
+      html = container.innerHTML;
+    }
+  } else if (typeof document.selection != "undefined") {
+    if (document.selection.type == "Text") {
+      html = document.selection.createRange().htmlText;
+    }
+  }
+  document.getElementById(identidade).innerHTML = antes.concat(novalinha, html, fechalinha);
+   var sel, range, node;
+    if (window.getSelection) {
+        sel = window.getSelection();
+        if (sel.getRangeAt && sel.rangeCount) {
+            range = window.getSelection().getRangeAt(0);
+            if(identidade=='listaarte'){
+            var textohtml = '<span style="background-color: yellow;">' + range + '</span>';
+            }
+            else if(identidade=='listadesenv'){
+            var textohtml = '<span style="background-color: aqua;">' + range + '</span>';
+            }
+            else if(identidade=='listaaudio'){
+            var textohtml = '<span style="background-color: lime;">' + range + '</span>';
+            }
+            else if(identidade=='listaeduca'){
+              var textohtml = '<span style="background-color: magenta;">' + range + '</span>';
+            }
+            range.deleteContents();
+            
+            var el = document.createElement("div");
+            el.innerHTML = textohtml;
+            var frag = document.createDocumentFragment(), node, lastNode;
+            while ( (node = el.firstChild) ) {
+                lastNode = frag.appendChild(node);
+            }
+            range.insertNode(frag);
+        }
+    } else if (document.selection && document.selection.createRange) {
+        range = document.selection.createRange();
+        range.collapse(false);
+        range.pasteHTML(textohtml);
+    }
+}
+
+function removeLista(identidade) {
+  var html_2 = "";
+  document.getElementById(identidade).innerHTML = html_2;
+
+}
+</script>
+<style>
+  #myarea {
+  border: 1px solid #000;
+  padding: 5px;
+  height: 150px;
+  width: 400px;
+  overflow: scroll;
+}
+
+#header1 {
+  text-align: center;
+  font-size: 15px;
+  color: black;
+  background-color: yellow;
+  margin:0;
+  padding:0;
+  border-bottom: 1px solid;
+}
+
+#header2 {
+  text-align: center;
+  font-size: 15px;
+  color: black;
+  background-color: aqua;
+  border-bottom: 1px solid;
+}
+
+#header3 {
+  text-align: center;
+  font-size: 15px;
+  color: black;
+  background-color: lime;
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+}
+  #header4{
+  text-align: center;
+  font-size: 15px;
+  color: black;
+  border-top: 1px solid;
+  background-color: magenta;
+  border-bottom: 1px solid;
+  }
+#listaaudio {
+  list-style-image: url("https://png.icons8.com/metro/13/00FF00/music.png");
+  list-style-position: inside;
+}
+
+#listadesenv {
+  list-style-image: url("https://png.icons8.com/metro/13/00FFFF/source-code.png");
+  list-style-position: inside;
+  
+}
+
+#listaarte {
+  list-style-image: url("https://png.icons8.com/metro/13/FFFF00/paint-bucket.png");
+  list-style-position: inside;
+}
+  #listaeduca{
+    list-style-image: url("https://png.icons8.com/metro/13/FF00FF/graduation-cap.png");
+    list-style-position: inside;
+  }
+
+.button {
+  background-color: yellow;
+  /*amarelo */
+  border-radius: 4px;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  color: black;
+  padding: 8px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+.button2 {
+  background-color: aqua;
+}
+
+.button3 {
+  background-color: lime;
+}
+  .button4{
+    background-color: magenta;
+  }
+  .grid-container{
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
+    grid-auto-flow: row;
+    grid-gap: 0;
+    overflow: hidden;
+    margin:0;
+    padding:0;
+    border: 1px solid;
+  }
+  h2{
+    margin:0;
+    padding:0;
+  }
+  .col1{
+    border-right: 1px solid;
+  }
+  .col3{
+    border-right: 1px solid;
+  }
+</style>
+</html>
+   
